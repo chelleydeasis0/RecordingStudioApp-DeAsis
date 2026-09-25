@@ -4,8 +4,7 @@ import com.joysistvi.recordingapp.model.Artist;
 
 import java.util.List;
 
-public class ArtistService {
-
+public interface ArtistService {
 
         List<Artist> getAllArtists();
         Artist getArtistById(int id);
@@ -16,5 +15,4 @@ public class ArtistService {
         boolean restoreArtist(int id);
         boolean deleteArtist(int id);
         List<Artist> getAllArchivedArtists();
-    }
 }

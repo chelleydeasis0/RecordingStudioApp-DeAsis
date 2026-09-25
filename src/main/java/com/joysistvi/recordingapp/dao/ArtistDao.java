@@ -76,8 +76,6 @@ public class ArtistDao {
         }
     }
 
-
-
     public void createArtist(String name) {
         // Validation
         if (name == null || name.trim().isEmpty()) {
