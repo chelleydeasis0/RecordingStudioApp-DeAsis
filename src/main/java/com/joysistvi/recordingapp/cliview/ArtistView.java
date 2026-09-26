@@ -77,7 +77,6 @@ public class ArtistView {
 
     private void viewAllArtists() {
         System.out.println("\n----- View All Artists -----");
-
         List<Artist> artists = artistController.handleViewAllArtists();
         printArtists(artists);
     }
@@ -85,9 +84,7 @@ public class ArtistView {
     private void searchArtist() {
         System.out.println("\n----- Search Artists -----");
         System.out.print("Enter name: ");
-
         String keyword = scanner.nextLine();
-
         List<Artist> artists = artistController.handleSearchArtist(keyword);
         printArtists(artists);
     }
@@ -95,19 +92,10 @@ public class ArtistView {
     private void addArtists() {
         System.out.println("\n----- Add Artists -----");
         System.out.print("Name: ");
-
         String name = scanner.nextLine();
-
         Artist artist = new Artist(name);
-
         boolean isSuccess = artistController.handleCreateArtist(artist);
-
-        System.out.println(
-                isSuccess
-                        ? "Artist added successfully."
-                        : "Failed to add artist."
-        );
-
+        System.out.println(isSuccess ? "Artist added successfully." : "Failed to add artist.");
         if (isSuccess) {
             System.out.println();
             viewAllArtists();
@@ -116,42 +104,26 @@ public class ArtistView {
 
     private void updateArtist() {
         System.out.println("\n----- Update Artists -----");
-
         viewAllArtists();
-
         System.out.print("Artist ID to update: ");
         int id = readInt();
-
         Artist current = artistController.handleGetArtistById(id);
 
         if (current == null) {
-            System.out.println(
-                    "No artist found with ID " + id +
-                            ". Please check the ID and try again."
-            );
+            System.out.println("No artist found with ID " + id + ". Please check the ID and try again.");
             return;
         }
 
-        System.out.print(
-                "New Name [" + current.getName() +
-                        "] (press Enter to keep the current): "
-        );
+        System.out.print("New Name [" + current.getName() + "] (press Enter to keep the current): ");
 
         String name = scanner.nextLine();
-
         if (name.trim().isEmpty()) {
             name = current.getName();
         }
 
         Artist artist = new Artist(id, name);
-
         boolean isSuccess = artistController.handleUpdateArtist(artist);
-
-        System.out.println(
-                isSuccess
-                        ? "Artist updated successfully."
-                        : "Failed to update artist."
-        );
+        System.out.println(isSuccess ? "Artist updated successfully." : "Failed to update artist.");
 
         if (isSuccess) {
             System.out.println();
@@ -161,87 +133,52 @@ public class ArtistView {
 
     private void archiveArtist() {
         System.out.println("\n----- Archive Artist -----");
-
         viewAllArtists();
-
         System.out.print("Artist ID to archive: ");
         int id = readInt();
-
         boolean isSuccess = artistController.handleArchiveArtist(id);
-
-        System.out.println(
-                isSuccess
-                        ? "Artist archived successfully."
-                        : "Failed to archive artist."
-        );
+        System.out.println(isSuccess ? "Artist archived successfully." : "Failed to archive artist.");
     }
 
     private void restoreArtist() {
         System.out.println("\n----- Restore Artist -----");
-
         viewAllArchivedArtists();
-
         System.out.print("Artist ID to restore: ");
         int id = readInt();
-
         boolean isSuccess = artistController.handleRestoreArtist(id);
 
-        System.out.println(
-                isSuccess
-                        ? "Artist restored successfully."
-                        : "Failed to restore artist."
-        );
+        System.out.println(isSuccess ? "Artist restored successfully." : "Failed to restore artist.");
     }
 
     private void deleteArtist() {
         System.out.println("\n----- Delete Artist -----");
-
         viewAllArchivedArtists();
-
         System.out.print("Artist ID to delete: ");
         int id = readInt();
-
         boolean isSuccess = artistController.handleDeleteArtist(id);
-
-        System.out.println(
-                isSuccess
-                        ? "Artist deleted successfully."
-                        : "Failed to delete artist."
-        );
+        System.out.println(isSuccess ? "Artist deleted successfully." : "Failed to delete artist.");
     }
 
     private void viewAllArchivedArtists() {
         System.out.println("\n----- View All Archived Artists -----");
-
-        List<Artist> artists =
-                artistController.handleViewAllArchivedArtists();
-
+        List<Artist> artists = artistController.handleViewAllArchivedArtists();
         printArtists(artists);
     }
 
     public void printArtists(List<Artist> artists) {
-
         if (artists.isEmpty()) {
             System.out.println("No artists found.");
             return;
         }
 
-        String border =
-                "+" + "-".repeat(6)
-                        + "+"
-                        + "-".repeat(27)
-                        + "+";
-
+        String border = "+" + "-".repeat(6) + "+" + "-".repeat(27) + "+";
         System.out.println(border);
         System.out.printf("| %-4s | %-25s |%n", "ID", "Name");
         System.out.println(border);
 
         for (Artist artist : artists) {
-            System.out.printf(
-                    "| %-4s | %-25s |%n",
-                    artist.getId(),
-                    artist.getName()
-            );
+            System.out.printf("| %-4s | %-25s |%n", artist.getId(),
+                    artist.getName());
         }
 
         System.out.println(border);

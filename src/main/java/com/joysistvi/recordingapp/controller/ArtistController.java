@@ -8,12 +8,13 @@ import java.util.List;
 public class ArtistController {
 
     private final ArtistService artistService;
-
-    public ArtistController(ArtistService artistService) {
+    public ArtistController(ArtistService artistService)
+    {
         this.artistService = artistService;
     }
 
     public List<Artist> handleViewAllArtists() {
+
         return artistService.getAllArtists();
     }
 
@@ -44,7 +45,6 @@ public class ArtistController {
     public List<Artist> handleViewAllArchivedArtists() {
         return artistService.getAllArchivedArtists();
     }
-
     public boolean handleUpdateArtist(Artist artist) {
         return artistService.updateArtist(artist);
     }

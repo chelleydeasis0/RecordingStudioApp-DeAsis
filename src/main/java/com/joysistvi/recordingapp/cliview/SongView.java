@@ -8,15 +8,12 @@ import java.util.List;
 public class SongView {
 
     private final SongController songController;
-
     public SongView(SongController songController) {
         this.songController = songController;
     }
-
     public void viewAllSongs() {
 
         System.out.println("\n----- View All Songs -----");
-
         List<Song> songs = songController.handleViewAllSongs();
 
         if (songs.isEmpty()) {
@@ -25,8 +22,7 @@ public class SongView {
         }
 
         for (Song song : songs) {
-            System.out.printf(
-                    "%-4d | %-35s | %-6s | %-15s | Album ID: %-4d%n",
+            System.out.printf("%-4d | %-35s | %-6s | %-15s | Album ID: %-4d%n",
                     song.getId(),
                     song.getTitle(),
                     song.getLength(),

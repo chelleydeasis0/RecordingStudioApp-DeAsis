@@ -27,8 +27,7 @@ public class ArtistRepoImpl implements ArtistRepo {
             while (result.next()) {
                 artists.add(new Artist(
                         result.getInt("id"),
-                        result.getString("name")
-                ));
+                        result.getString("name")));
             }
 
         } catch (SQLException e) {
@@ -73,8 +72,7 @@ public class ArtistRepoImpl implements ArtistRepo {
                 while (res.next()) {
                     artists.add(new Artist(
                             res.getInt("id"),
-                            res.getString("name")
-                    ));
+                            res.getString("name")));
                 }
             }
 

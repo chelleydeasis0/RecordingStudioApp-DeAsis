@@ -8,7 +8,6 @@ import java.util.List;
 public class PlaylistServiceImpl implements PlaylistService {
 
     private final PlaylistRepository playlistRepository;
-
     public PlaylistServiceImpl(PlaylistRepository playlistRepository) {
         this.playlistRepository = playlistRepository;
     }

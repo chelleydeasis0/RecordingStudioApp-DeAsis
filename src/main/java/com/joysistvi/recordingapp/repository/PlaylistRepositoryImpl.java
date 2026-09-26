@@ -33,8 +33,7 @@ public class PlaylistRepositoryImpl implements PlaylistRepository {
                 playlists.add(new Playlist(
                         result.getInt("id"),
                         result.getDate("date_created"),
-                        result.getInt("user_id")
-                ));
+                        result.getInt("user_id")));
             }
 
         } catch (Exception e) {

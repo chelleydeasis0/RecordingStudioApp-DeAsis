@@ -8,15 +8,12 @@ import java.util.List;
 public class AlbumView {
 
     private final AlbumController albumController;
-
     public AlbumView(AlbumController albumController) {
         this.albumController = albumController;
     }
-
     public void run() {
 
         System.out.println("\n----- Album Management -----");
-
         List<Album> albums = albumController.handleViewAllAlbums();
 
         if (albums.isEmpty()) {
@@ -25,13 +22,11 @@ public class AlbumView {
         }
 
         for (Album album : albums) {
-            System.out.printf(
-                    "%-4d | %-25s | %-6d | Artist ID: %-4d%n",
+            System.out.printf("%-4d | %-25s | %-6d | Artist ID: %-4d%n",
                     album.getId(),
                     album.getName(),
                     album.getYear(),
-                    album.getArtistId()
-            );
+                    album.getArtistId());
         }
     }
 

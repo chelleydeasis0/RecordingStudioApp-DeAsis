@@ -8,7 +8,6 @@ import java.util.List;
 public class SongServiceImpl implements SongService {
 
     private final SongRepository songRepository;
-
     public SongServiceImpl(SongRepository songRepository) {
         this.songRepository = songRepository;
     }
